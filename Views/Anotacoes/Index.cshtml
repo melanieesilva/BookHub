@@ -1,0 +1,145 @@
+@model IEnumerable<BookHub.Models.AnotacaoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Mensagem"] != null)
+{
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="right: 24px; position: absolute;z-index:1;">
+  <strong>@TempData["Mensagem"]</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+
+<div class="headerIndex">
+    <h1 class="titleIndex">Anotações</h1>
+    <p>
+        <a asp-action="Create" class="btnCreate">Nova Nota <iconify-icon icon="ic:round-add"></iconify-icon></a>
+    </p>
+</div>
+
+@* <table class="table">
+<thead>
+<tr>
+<th>
+@Html.DisplayNameFor(model => model.Titulo)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Texto)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Categoria)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Cor)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.DataPulicacao)
+</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+<tr>
+<td>
+@Html.DisplayFor(modelItem => item.Titulo)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Texto)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Categoria)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Cor)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.DataPulicacao)
+</td>
+<td>
+<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+</td>
+</tr>
+}
+</tbody>
+</table> *@
+
+<div class="containerNotes">
+    @foreach (var item in Model)
+    {
+        <div id="note" class="note" data-cor="@Html.DisplayFor(modelItem => item.Cor)">
+            <p style="height: 145px; max-width: 189px;font-size:14px;overflow: hidden;">@Html.DisplayFor(modelItem =>
+            item.Texto)</p>
+            <div class="btnEdit">
+                <a class="btnEditLink" asp-action="Edit" asp-route-id="@item.Id"><iconify-icon
+                        icon="solar:pen-linear"></iconify-icon></a>
+                <div class="dropdown">
+                    <button class="more btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <iconify-icon icon="mingcute:more-2-fill"></iconify-icon>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a style="color: rgb(207, 18, 18);" class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Excluir</a></li>
+                    </ul>
+                </div>
+            </div>
+            @* <p id="dataPubli" data-Publicacao="@Html.DisplayFor(modelItem => item.DataPulicacao)"></p> *@
+        </div>
+    }
+</div>
+
+
+<div class="modal" tabindex="-1" id="modalCreate">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title">Escreva uma nota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Título"
+                            style="border: none;font-size:20px;font-weight:500;padding-left:2;background:none;" />
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="texto" rows="3"
+                            style="border: none;background:none;height:350px" placeholder="Digite aqui..."></textarea>
+                    </div>
+                    <p>Cor</p>
+                    <div class="colors">
+                        <div style="background-color: #D1BEF1;" data-backCor="#D1BEF1" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color:#C8E24D;" data-backCor="#C8E24D" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color: #F5B501;" data-backCor="#F5B501" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color: #01af5e;" data-backCor="#01af5e" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <input id="inputCor" hidden>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <input style="background:none;" type="text" class="form-control" id="categoria"
+                            placeholder="Adicione uma categoria">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn closebtn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+

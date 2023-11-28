@@ -1,0 +1,23 @@
+COMANDOS EXTRAS
+
+"DefaultConnection": "server=localhost;user=root;database=bookHub;password=7/8*9-a1s2d3"
+
+dotnet tool install --global dotnet-aspnet-codegenerator
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGenerators.Mvc
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Pomelo.EntityFrameworkCore.Mysql
+dotnet add package Pomelo.EntityFrameworkCore.MySql.Design
+
+
+dotnet aspnet-codegenerator controller -name LivrosController -m Livro -dc LivrariaContext
+--relativeFolderPath Controllers --useDefaultLayout
+
+
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
