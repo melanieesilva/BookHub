@@ -7,14 +7,9 @@ using BookHub.Models;
 
 namespace BookHub.Repository
 {
-    public class AnotacaoRepository : IAnotacaoRepository
+    public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
     {
-        private readonly ApplicationDbContext app_context;
-
-        public AnotacaoRepository(ApplicationDbContext appcontext)
-        {
-            app_context = appcontext;
-        }
+        private readonly ApplicationDbContext app_context = appcontext;
 
         public AnotacaoModel Cadastrar(AnotacaoModel anotacao)
         {

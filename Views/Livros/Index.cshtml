@@ -1,0 +1,42 @@
+@* @model IEnumerable<BookLibrary.Models.LivroModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+}
+
+
+<div class="container">
+    <div class="headerCon">
+        <div class="contentTitle" style="display: flex; gap:14px;align-items:center;padding: 40px 0;">
+<h1>Bem vindo!</h1><img src="/img/WavingHand.png" width="40px" height="40px">
+        </div>
+        <h3 style="margin-bottom: 32px;font-weight:400">Livros</h3>
+    </div>
+    <div class="containerInfo">
+
+    @foreach (var item in Model){
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem =>
+            item.Titulo)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem =>
+            item.Descricao)</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="category">@Html.DisplayFor(modelItem =>
+            item.NomeCategoria)</span></li>
+                <li class="list-group-item">@Html.DisplayFor(modelItem =>
+            item.NomeAutor)</li>
+                <li class="list-group-item">
+                    <a style="color: rgb(207, 18, 18);" asp-action="ConfirmarDeletar" asp-route-id="@item.Id">Excluir</a>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                </li>
+            </ul>
+        </div>
+}
+
+    </div>
+</div> *@

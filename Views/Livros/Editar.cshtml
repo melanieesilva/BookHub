@@ -1,0 +1,32 @@
+@model LivroModel
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<div class="containerText" style="display: flex; align-items:center;gap: 16px;padding: 40px 0">
+    <h2>Editar Livro</h2> <img src="/img/GreenBook.png" alt="" width="30px" height="30px">
+</div>
+
+<div class="containerForm">
+    <form asp-controller="Livro" asp-action="Atualizar" method="post">
+
+        <div class="mb-3" style="width:50%;">
+            <label for="Titulo" class="form-label">Título</label>
+            <input asp-for="Titulo" class="form-control" id="Titulo" placeholder="Seu título..."/>
+        </div>
+        <div class="mb-3" style="width:50%;">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea class="form-control" id="descricao" rows="3" asp-for="Descricao"></textarea>
+        </div>
+        <div class="mb-3" style="width:50%;">
+            <label for="Autor" class="form-label">Autor</label>
+            <input asp-for="NomeAutor" class="form-control" id="Autor" placeholder="Nome Autor..."/>
+        </div>
+        <div class="mb-3" style="width:50%;">
+            <label for="Categoria" class="form-label">Categoria</label>
+            <input asp-for="NomeCategoria" class="form-control" id="Categoria" placeholder="Nome categoria..."/>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <input type="hidden" asp-for="Id">
+    </form>
+</div>

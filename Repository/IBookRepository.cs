@@ -6,7 +6,7 @@ using BookHub.Models;
 
 namespace BookHub.Repository
 {
-    public interface IAnotacaoRepository
+    public interface IBookRepository
     {
         AnotacaoModel Cadastrar(AnotacaoModel anotacao);
         List<AnotacaoModel> Listar();
