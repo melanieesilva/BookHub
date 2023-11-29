@@ -2,11 +2,12 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
 @if (TempData["Mensagem"] != null)
 {
-<div class="alert alert-warning alert-dismissible fade show" role="alert" style="right: 24px; position: absolute;z-index:1;">
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="top:24px; right: 24px; position: absolute;z-index:1;">
   <strong>@TempData["Mensagem"]</strong>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -72,7 +73,7 @@
     @foreach (var item in Model)
     {
         <div id="note" class="note" data-cor="@Html.DisplayFor(modelItem => item.Cor)">
-            <p style="height: 145px; max-width: 189px;font-size:14px;overflow: hidden;">@Html.DisplayFor(modelItem =>
+            <p style="height: 145px; max-width: 100%;font-size:14px;overflow: hidden;">@Html.DisplayFor(modelItem =>
             item.Texto)</p>
             <div class="btnEdit">
                 <a class="btnEditLink" asp-action="Edit" asp-route-id="@item.Id"><iconify-icon

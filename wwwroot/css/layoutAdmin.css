@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*{
+    font-family: 'Prompt', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+main{
+    width: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.sidebar{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    padding: 20px 40px;
+    border-right: 1px solid rgb(231, 231, 231);
+}
+
+.menu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.navMenu{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.navMenu > li{
+    display: flex;
+    padding: 8px 24px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 12px;
+    border-top: 1px solid rgb(231, 231, 231);
+}
+
+.navMenu > li > a{
+    color: black !important;
+    text-decoration: none;
+}
+
+.category{
+    padding: 12px 16px;
+    background-color: rgb(194, 207, 254);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 100px;
+}
+
+
+.headerIndex{
+    padding: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .opt{
+    background:none;
+    border: 1px solid rgb(150, 150, 150);
+    color: black;
+  }
+  
+  .btnCreate{
+    background-color: black;
+    color: white;
+    padding: 8px 24px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    gap: 8px;
+  }
+  .btnCreate > iconify-icon{
+    font-size: 22px;
+  }
+  .btnCreate:hover{
+    color: rgb(219, 219, 219) !important;
+  }
+  
+  .containerNotes{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    /* justify-content: space-between; */
+  }
+  
+  .note{
+    position: relative;
+    background-color: #258cfb;
+    width: calc(100% / 4 - 10px);
+    margin: 5px;
+    height: 224px;
+    border-radius: 10px;
+    color: black;
+    padding: 14px;
+    overflow: hidden;
+  }
+  
+  .btnEdit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+  }
+  
+  .more{
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    color: white !important;
+    height: fit-content !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  
+  }
+  
+  .dropdown-toggle::after{
+    display: none !important;
+  }
+  
+  .btnEditLink{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-size: 16px;
+    width: fit-content;
+  }
+  
+  .colors{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .cor{
+    padding: 12px;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .bordaCor{
+    border: 4px solid rgb(255, 255, 255);
+  }
+  
+  .closebtn{
+    background:none;
+    border: 1px solid black;
+    color: black;
+  }
+  
+  
+  .return{
+    padding: 40px;
+  }
+  .return > a {
+    text-decoration: none;
+    color: black !important;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .iconReturn{
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background-color: rgb(247, 247, 247);
+    font-size: 20px;
+    width: fit-content;
+  }
+  

@@ -23,37 +23,39 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
         List<AnotacaoModel> anotacoes = _bookRepository.ListarAnotacoes();
         return View(anotacoes);
     }
-    
-    public IActionResult Create(int? id)
+
+    public IActionResult Create(int id)
     {
-        TempData["IdLivro"] = id;
-        return View();
+        //buscar livro
+        LivroModel livro = _bookRepository.ObterLivro(id);
+        //cadastrar livro em AnotacoesLivro
+        _bookRepository.CadastrarAnotacaoLivro(livro);
+        //retornar modelo
+        //buscar a anotacao do livro e retornar
+        AnotacaoLivroModel anotacaoLivro = _bookRepository.ObterAnotacaoLivro(id);
+        return View(anotacaoLivro);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Cadastrar(int id,AnotacaoModel anotacao)
+    public IActionResult Cadastrar(AnotacaoLivroModel anotacaoLivro)
     {
         try
         {
-            _bookRepository.CadastrarAnotacao(id,anotacao);
+            _bookRepository.CadastrarAnotacaoLivro(anotacaoLivro);
             TempData["Mensagem"] = "Anotação cadastrada com sucesso.";
             return RedirectToAction("Index");
         }
         catch (Exception ex)
         {
-            TempData["Mensagem"] = $"Houve um erro e não foi possível cadastrar a nota. Detalhes: {ex.Message}";
+            TempData["Mensagem"] =
+                $"Houve um erro e não foi possível cadastrar a nota. Detalhes: {ex.Message}";
             return RedirectToAction("Index");
         }
     }
 
     public IActionResult Edit(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         AnotacaoModel anotacao = _bookRepository.ObterAnotacao(id);
 
         if (anotacao == null)
@@ -72,25 +74,20 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
             try
             {
                 _bookRepository.AtualizarAnotacao(anotacao);
+                TempData["Mensagem"] = "Editada com sucesso!";
+                return RedirectToAction("Index");
             }
             catch
             {
                 TempData["Mensagem"] = "Anotação não encontrada. Edição não realizada.";
                 return RedirectToAction("Index");
             }
-            TempData["Mensagem"] = "Editada com sucesso!";
-            return RedirectToAction("Index");
         }
         return View(anotacao);
     }
 
     public IActionResult Delete(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         AnotacaoModel anotacao = _bookRepository.ObterAnotacao(id);
 
         if (anotacao == null)

@@ -26,11 +26,6 @@ public class LivrosController(IBookRepository bookRepository) : Controller
     
     public IActionResult Details(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)
@@ -65,11 +60,6 @@ public class LivrosController(IBookRepository bookRepository) : Controller
 
     public IActionResult Editar(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)
@@ -102,11 +92,6 @@ public class LivrosController(IBookRepository bookRepository) : Controller
 
     public IActionResult ConfirmarDeletar(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)

@@ -8,7 +8,7 @@ namespace BookHub.Repository
 {
     public interface IBookRepository
     {
-        AnotacaoModel CadastrarAnotacao(int id,AnotacaoModel anotacao);
+        AnotacaoModel CadastrarAnotacao(AnotacaoModel anotacao);
         List<AnotacaoModel> ListarAnotacoes();
         void AtualizarAnotacao(AnotacaoModel anotacao);
         void DeletarAnotacao(int id);
@@ -20,5 +20,7 @@ namespace BookHub.Repository
         void DeletarLivro(int id);
         LivroModel ObterLivro(int id);
 
+        AnotacaoLivroModel CadastrarAnotacaoLivro(AnotacaoModel anotacao, LivroModel livro);
+        AnotacaoLivroModel ObterAnotacaoLivro(int id);
     }
 }

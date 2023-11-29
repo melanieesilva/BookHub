@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - BookHub</title>
+    <link rel="stylesheet" href="/css/layoutAdmin.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+<body>
+        
+<aside class="sidebar">
+    <div class="logo">
+       <a asp-controller="Home" asp-action="Index">
+           <img src="/img/logonewbookhubblack.png" height="40px">
+       </a>
+        
+    </div>
+    <div class="menu">
+        <ul class="navMenu">
+            <li><iconify-icon icon="majesticons:home-line"></iconify-icon>
+                <a asp-controller="Anotacoes" asp-action="Index">Anotações</a>
+            </li>
+            <li><iconify-icon icon="ph:books"></iconify-icon>
+            <a asp-asp-controller="Livros" asp-action="Index">Livros</a>
+            </li>
+        </ul>
+    </div>
+     <div class="profile">
+        <partial name="_LoginPartial" />
+    </div>
+</aside>
+
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

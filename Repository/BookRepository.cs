@@ -1,103 +1,111 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using BookHub.Data;
 using BookHub.Models;
 
-namespace BookHub.Repository
+namespace BookHub.Repository;
+
+public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
 {
-    public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
+    private readonly ApplicationDbContext app_context = appcontext;
+
+    public AnotacaoModel CadastrarAnotacao(AnotacaoModel anotacao)
     {
-        private readonly ApplicationDbContext app_context = appcontext;
+        app_context.Anotacoes.Add(anotacao);
+        app_context.SaveChanges();
 
-        public AnotacaoModel CadastrarAnotacao(int id, AnotacaoModel anotacao)
+        return anotacao;
+    }
+
+    public AnotacaoModel ObterAnotacao(int id)
+    {
+        return app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
+    }
+
+    public List<AnotacaoModel> ListarAnotacoes()
+    {
+        return app_context.Anotacoes.ToList();
+    }
+
+    public void AtualizarAnotacao(AnotacaoModel anotacao)
+    {
+        var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == anotacao.Id);
+        if (anotacaoExistente != null)
         {
-            app_context.Anotacoes.Add(anotacao);
-            LivroModel livro = app_context.Livros.FirstOrDefault(l => l.Id == id);
-            livro.CodigoAnotacao = id;
+            anotacaoExistente.Titulo = anotacao.Titulo;
+            anotacaoExistente.Texto = anotacao.Texto;
+            anotacaoExistente.Categoria = anotacao.Categoria;
+            anotacaoExistente.Cor = anotacao.Cor;
 
             app_context.SaveChanges();
-            return anotacao;
         }
+    }
 
-        public AnotacaoModel ObterAnotacao(int id)
+    public void DeletarAnotacao(int id)
+    {
+        var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
+        if (anotacaoExistente != null)
         {
-            return app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
-        }
-
-        public List<AnotacaoModel> ListarAnotacoes()
-        {
-            return app_context.Anotacoes.ToList();
-        }
-
-        public void AtualizarAnotacao(AnotacaoModel anotacao)
-        {
-            var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == anotacao.Id);
-            if (anotacaoExistente != null)
-            {
-                anotacaoExistente.Titulo = anotacao.Titulo;
-                anotacaoExistente.Texto = anotacao.Texto;
-                anotacaoExistente.Categoria = anotacao.Categoria;
-                anotacaoExistente.Cor = anotacao.Cor;
-
-                app_context.SaveChanges();
-            }
-        }
-
-        public void DeletarAnotacao(int id)
-        {
-            var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
-            if (anotacaoExistente != null)
-            {
-                app_context.Remove(anotacaoExistente);
-                app_context.SaveChanges();
-            }
-        }
-
-        public LivroModel CadastrarLivro(LivroModel livro)
-        {
-            app_context.Livros.Add(livro);
+            app_context.Remove(anotacaoExistente);
             app_context.SaveChanges();
-            return livro;
         }
+    }
 
-        public List<LivroModel> ListarLivro()
+    public LivroModel CadastrarLivro(LivroModel livro)
+    {
+        app_context.Livros.Add(livro);
+        app_context.SaveChanges();
+        return livro;
+    }
+
+    public List<LivroModel> ListarLivro()
+    {
+        return app_context.Livros.ToList();
+    }
+
+    public void AtualizarLivro(LivroModel livro)
+    {
+        var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == livro.Id);
+        if (livroExistente != null)
         {
-            return app_context.Livros.ToList();
-        }
+            livroExistente.Titulo = livro.Titulo;
+            livroExistente.Descricao = livro.Descricao;
+            livroExistente.Genero = livro.Genero;
+            livroExistente.NomeAutor = livro.NomeAutor;
 
-        public void AtualizarLivro(LivroModel livro)
+            app_context.SaveChanges();
+        }
+    }
+
+    public void DeletarLivro(int id)
+    {
+        var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == id);
+        if (livroExistente != null)
         {
-            var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == livro.Id);
-            if (livroExistente != null)
-            {
-                livroExistente.Titulo = livro.Titulo;
-                livroExistente.Descricao = livro.Descricao;
-                livroExistente.Genero = livro.Genero;
-                livroExistente.NomeAutor = livro.NomeAutor;
-
-                app_context.SaveChanges();
-            }
+            app_context.Remove(livroExistente);
+            app_context.SaveChanges();
         }
+    }
 
-        public void DeletarLivro(int id)
-        {
-            var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == id);
-            if (livroExistente != null)
-            {
-                app_context.Remove(livroExistente);
-                app_context.SaveChanges();
-            }
-        }
+    public LivroModel ObterLivro(int id)
+    {
+        return app_context.Livros.FirstOrDefault(a => a.Id == id);
+    }
 
-        public LivroModel ObterLivro(int id)
-        {
-            if (id != null)
-            {
-                return app_context.Livros.FirstOrDefault(a => a.Id == id);
-            }
-            throw new NotImplementedException();
-        }
+    public AnotacaoLivroModel CadastrarAnotacaoLivro(AnotacaoModel anotacao, LivroModel livro)
+    {
+        var anotacaoLivro = new AnotacaoLivroModel { Anotacao = anotacao, Livro = livro };
+        app_context.AnotacoesLivros.Add(anotacaoLivro);
+        app_context.SaveChanges();
+
+        return anotacaoLivro;
+    }
+
+    public AnotacaoLivroModel ObterAnotacaoLivro(int id)
+    {
+            return app_context.AnotacoesLivros.FirstOrDefault(a => a.Livro.Id == id);
     }
 }

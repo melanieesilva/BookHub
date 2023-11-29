@@ -25,13 +25,6 @@ html {
   border: none !important;
 }
 
-.visible{
-  display: flex !important;
-}
-
-.invisible{
-  display: none !important;
-}
 
 html {
   position: relative;
@@ -131,26 +124,8 @@ body {
 }
 
 
-
-h1{
-  display: none;
-}
-
 .titleIndex{
   display: block;
-}
-
-.col-md-4{
-  background-color: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.row{
-  padding: 80px 20px !important;
-  display: flex;
-  justify-content: center;
 }
 
 .logout{
@@ -162,141 +137,3 @@ h1{
   justify-content: flex-start;
 }
 
-.headerIndex{
-  padding: 40px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-.opt{
-  background:none;
-  border: 1px solid rgb(150, 150, 150);
-  color: black;
-}
-
-.btnCreate{
-  background-color: black;
-  color: white;
-  padding: 8px 24px;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  text-decoration: none;
-  gap: 8px;
-}
-.btnCreate > iconify-icon{
-  font-size: 22px;
-}
-
-.containerNotes{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 40px;
-  /* justify-content: space-between; */
-}
-
-.note{
-  position: relative;
-  background-color: #258cfb;
-  width: calc(100% / 6 - 10px);
-  margin: 5px;
-  height: 224px;
-  border-radius: 10px;
-  color: black;
-  padding: 14px;
-  overflow: hidden;
-}
-
-.btnEdit{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-}
-
-.more{
-  background: none;
-  padding: 0;
-  border: none;
-  color: white;
-  height: fit-content;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.dropdown-toggle::after{
-  display: none;
-}
-
-.btnEditLink{
-  padding: 10px;
-  background-color: black;
-  color: white;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  font-size: 16px;
-  width: fit-content;
-}
-
-.colors{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.cor{
-  padding: 12px;
-  border-radius: 100px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-
-.bordaCor{
-  border: 4px solid rgb(255, 255, 255);
-}
-
-.closebtn{
-  background:none;
-  border: 1px solid black;
-  color: black;
-}
-
-
-.return{
-  padding: 40px;
-}
-.return > a {
-  text-decoration: none;
-  color: black !important;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.iconReturn{
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  background-color: rgb(247, 247, 247);
-  font-size: 20px;
-  width: fit-content;
-}
