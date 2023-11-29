@@ -7,6 +7,23 @@ switch (area) {
         let row = document.querySelector(".row")
         let column = row.querySelector(".col-md-6")
         column.classList.add("invisible")
+
+        const btnSubmitLog = document.getElementById("login-submit")
+        const formLog = document.getElementById("account")
+        const titleFormLog = formLog.querySelector("h2")
+        const labelPwdLog = formLog.querySelector("label[for='Input_Password']");
+        const remember = document.getElementById("forgot-password")
+        const newregister = document.querySelector("a[href='/Identity/Account/Register?returnUrl=%2F']")
+        const resend = document.getElementById("resend-confirmation")
+
+        titleFormLog.innerHTML = "Faça Login"
+        btnSubmitLog.innerHTML = "Fazer Login"
+        btnSubmitLog.style.marginBottom = "32px"
+        labelPwdLog.innerHTML = "Senha"
+        remember.innerHTML = "Esqueceu a senha?"
+        newregister.innerHTML = "Não tem uma conta? Crie uma!"
+        resend.style.display = 'none';
+
         break;
     case "Register":
         //Editando textos da Criação de Conta
@@ -48,13 +65,11 @@ cardNote.forEach(card => {
 })
 
 
-
 function openModal() {
 
     let modalCreate = new bootstrap.Modal(document.getElementById('modalCreate'))
     modalCreate.show()
 }
-
 
 function select(el) {
     const coresSelecionadas = document.querySelectorAll('.cor')

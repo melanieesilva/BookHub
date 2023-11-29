@@ -8,7 +8,7 @@
 </div>
 
 <div class="containerForm">
-    <form asp-controller="Livro" asp-action="Create" method="post">
+    <form asp-controller="Livros" asp-action="Cadastrar" method="post">
 
         <div class="mb-3" style="width:50%;">
             <label for="Titulo" class="form-label">Título</label>
@@ -23,8 +23,8 @@
             <input asp-for="NomeAutor" class="form-control" id="Autor" placeholder="Nome Autor..."/>
         </div>
         <div class="mb-3" style="width:50%;">
-            <label for="Categoria" class="form-label">Categoria</label>
-            <input asp-for="NomeCategoria" class="form-control" id="Categoria" placeholder="Nome categoria..."/>
+            <label for="Genero" class="form-label">Categoria</label>
+            <input asp-for="Genero" class="form-control" id="Categoria" placeholder="Nome Gênero..."/>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>

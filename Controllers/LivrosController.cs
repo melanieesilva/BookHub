@@ -20,7 +20,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
 
     public IActionResult Index()
     {
-        List<LivroModel> livros = _bookRepository.Listar();
+        List<LivroModel> livros = _bookRepository.ListarLivro();
         return View(livros);
     }
     
@@ -31,7 +31,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
             return NotFound();
         }
 
-        LivroModel livro = _bookRepository.Obter(id);
+        LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)
         {
@@ -47,11 +47,11 @@ public class LivrosController(IBookRepository bookRepository) : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Cadastrar(int? Idlivro,LivroModel livro)
+    public IActionResult Cadastrar(LivroModel livro)
     {
         try
         {
-            _bookRepository.Cadastrar(Idlivro,livro);
+            _bookRepository.CadastrarLivro(livro);
             TempData["Mensagem"] = "Livro cadastrado com sucesso.";
             return RedirectToAction("Index");
         }
@@ -62,6 +62,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
         }
     }
 
+
     public IActionResult Editar(int id)
     {
         if (id == null)
@@ -69,7 +70,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
             return NotFound();
         }
 
-        LivroModel livro = _bookRepository.Obter(id);
+        LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)
         {
@@ -106,7 +107,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
             return NotFound();
         }
 
-        LivroModel livro = _bookRepository.Obter(id);
+        LivroModel livro = _bookRepository.ObterLivro(id);
 
         if (livro == null)
         {
@@ -119,7 +120,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Delete(int id)
     {
-        var LivroModel = _bookRepository.Obter(id);
+        var LivroModel = _bookRepository.ObterLivro(id);
 
         if (LivroModel == null)
         {
@@ -127,7 +128,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
             return RedirectToAction("Index");
         }
 
-        _bookRepository.Deletar(id);
+        _bookRepository.DeletarLivro(id);
 
         TempData["Mensagem"] = "Livro excluído com sucesso!";
         return RedirectToAction("Index");

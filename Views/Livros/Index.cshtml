@@ -1,4 +1,4 @@
-@* @model IEnumerable<BookLibrary.Models.LivroModel>
+@model IEnumerable<BookHub.Models.LivroModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -25,7 +25,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="category">@Html.DisplayFor(modelItem =>
-            item.NomeCategoria)</span></li>
+            item.Genero)</span></li>
                 <li class="list-group-item">@Html.DisplayFor(modelItem =>
             item.NomeAutor)</li>
                 <li class="list-group-item">
@@ -34,9 +34,14 @@
                 <li class="list-group-item">
                     <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
                 </li>
+                @if(item.Id < 1){
+                    <li class="list-group-item">
+                        <a asp-controller="Anotacoes" asp-action="Create" asp-route-id="@item.Id">Adicionar Anotação</a>
+                    </li>
+                }
             </ul>
         </div>
 }
 
     </div>
-</div> *@
+</div>

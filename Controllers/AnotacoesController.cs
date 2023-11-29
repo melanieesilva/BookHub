@@ -20,22 +20,23 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
 
     public IActionResult Index()
     {
-        List<AnotacaoModel> anotacoes = _bookRepository.Listar();
+        List<AnotacaoModel> anotacoes = _bookRepository.ListarAnotacoes();
         return View(anotacoes);
     }
     
-    public IActionResult Create()
+    public IActionResult Create(int? id)
     {
+        TempData["IdLivro"] = id;
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Cadastrar(AnotacaoModel anotacao)
+    public IActionResult Cadastrar(int id,AnotacaoModel anotacao)
     {
         try
         {
-            _bookRepository.Cadastrar(anotacao);
+            _bookRepository.CadastrarAnotacao(id,anotacao);
             TempData["Mensagem"] = "Anotação cadastrada com sucesso.";
             return RedirectToAction("Index");
         }
@@ -53,7 +54,7 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
             return NotFound();
         }
 
-        AnotacaoModel anotacao = _bookRepository.Obter(id);
+        AnotacaoModel anotacao = _bookRepository.ObterAnotacao(id);
 
         if (anotacao == null)
         {
@@ -90,7 +91,7 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
             return NotFound();
         }
 
-        AnotacaoModel anotacao = _bookRepository.Obter(id);
+        AnotacaoModel anotacao = _bookRepository.ObterAnotacao(id);
 
         if (anotacao == null)
         {
@@ -103,7 +104,7 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
     [ValidateAntiForgeryToken]
     public IActionResult DeleteConfirmed(int id)
     {
-        var anotacaoModel = _bookRepository.Obter(id);
+        var anotacaoModel = _bookRepository.ObterAnotacao(id);
 
         if (anotacaoModel == null)
         {
@@ -111,7 +112,7 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
             return RedirectToAction("Index");
         }
 
-        _bookRepository.Deletar(id);
+        _bookRepository.DeletarAnotacao(id);
 
         TempData["Mensagem"] = "Anotação excluída com sucesso!";
         return RedirectToAction("Index");

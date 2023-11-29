@@ -13,4 +13,5 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<AnotacaoModel> Anotacoes { get; set; }
+    public DbSet<LivroModel> Livros { get; set; }
 }

@@ -14,7 +14,7 @@ namespace BookHub.Models
         public string Descricao { get; set; }
         public string Genero { get; set; }
         public string NomeAutor { get; set; }
-        public int IdAnotacao { get; set; }
+        public int CodigoAnotacao { get; set; }
 
     }
 }
