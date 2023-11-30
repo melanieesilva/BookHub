@@ -9,12 +9,13 @@ namespace BookHub.Models
     public class LivroModel
     {
         [Key]
-        public int Id { get; set; }
+        public int IdLivro { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Genero { get; set; }
         public string NomeAutor { get; set; }
-        public int CodigoAnotacao { get; set; }
 
+        
+        public List<AnotacaoModel> Anotacoes { get; set; }
     }
 }

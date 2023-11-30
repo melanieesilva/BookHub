@@ -6,11 +6,6 @@ cardNote.forEach(card => {
 })
 
 
-function openModal() {
-
-    let modalCreate = new bootstrap.Modal(document.getElementById('modalCreate'))
-    modalCreate.show()
-}
 
 var inputCor = document.getElementById('inputCor')
 
@@ -27,5 +22,5 @@ function select(el) {
     // modal.style.backgroundColor = data
     inputCor.value = data
     console.log(inputCor.value)
-
+    document.querySelector("main").style.backgroundColor = data;
 }

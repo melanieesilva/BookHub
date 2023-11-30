@@ -26,23 +26,27 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
 
     public IActionResult Create(int id)
     {
-        //buscar livro
-        LivroModel livro = _bookRepository.ObterLivro(id);
-        //cadastrar livro em AnotacoesLivro
-        _bookRepository.CadastrarAnotacaoLivro(livro);
-        //retornar modelo
-        //buscar a anotacao do livro e retornar
-        AnotacaoLivroModel anotacaoLivro = _bookRepository.ObterAnotacaoLivro(id);
-        return View(anotacaoLivro);
+        AnotacaoModel anotacaoTemp = new AnotacaoModel
+        {
+            Titulo = "",
+            Texto = "",
+            Categoria = "",
+            Cor = "",
+            IdLivro = id
+        };
+
+        _bookRepository.CadastrarAnotacao(anotacaoTemp);
+
+        return View(anotacaoTemp);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Cadastrar(AnotacaoLivroModel anotacaoLivro)
+    public IActionResult Cadastrar(AnotacaoModel anotacao)
     {
         try
         {
-            _bookRepository.CadastrarAnotacaoLivro(anotacaoLivro);
+            _bookRepository.AtualizarAnotacao(anotacao);
             TempData["Mensagem"] = "Anotação cadastrada com sucesso.";
             return RedirectToAction("Index");
         }
@@ -69,21 +73,9 @@ public class AnotacoesController(IBookRepository bookRepository) : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Atualizar(AnotacaoModel anotacao)
     {
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                _bookRepository.AtualizarAnotacao(anotacao);
-                TempData["Mensagem"] = "Editada com sucesso!";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                TempData["Mensagem"] = "Anotação não encontrada. Edição não realizada.";
-                return RedirectToAction("Index");
-            }
-        }
-        return View(anotacao);
+        _bookRepository.AtualizarAnotacao(anotacao);
+        TempData["Mensagem"] = "Editada com sucesso!";
+        return RedirectToAction("Index");
     }
 
     public IActionResult Delete(int id)

@@ -22,7 +22,7 @@ public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
 
     public AnotacaoModel ObterAnotacao(int id)
     {
-        return app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
+        return app_context.Anotacoes.FirstOrDefault(a => a.IdAnotacao == id);
     }
 
     public List<AnotacaoModel> ListarAnotacoes()
@@ -32,7 +32,9 @@ public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
 
     public void AtualizarAnotacao(AnotacaoModel anotacao)
     {
-        var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == anotacao.Id);
+        var anotacaoExistente = app_context
+            .Anotacoes
+            .FirstOrDefault(a => a.IdAnotacao == anotacao.IdAnotacao);
         if (anotacaoExistente != null)
         {
             anotacaoExistente.Titulo = anotacao.Titulo;
@@ -44,14 +46,13 @@ public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
         }
     }
 
-    public void DeletarAnotacao(int id)
+    public bool DeletarAnotacao(int id)
     {
-        var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.Id == id);
-        if (anotacaoExistente != null)
-        {
-            app_context.Remove(anotacaoExistente);
-            app_context.SaveChanges();
-        }
+        var anotacaoExistente = app_context.Anotacoes.FirstOrDefault(a => a.IdAnotacao == id);
+
+        app_context.Remove(anotacaoExistente);
+        app_context.SaveChanges();
+        return true;
     }
 
     public LivroModel CadastrarLivro(LivroModel livro)
@@ -68,7 +69,7 @@ public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
 
     public void AtualizarLivro(LivroModel livro)
     {
-        var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == livro.Id);
+        var livroExistente = app_context.Livros.FirstOrDefault(a => a.IdLivro == livro.IdLivro);
         if (livroExistente != null)
         {
             livroExistente.Titulo = livro.Titulo;
@@ -80,32 +81,19 @@ public class BookRepository(ApplicationDbContext appcontext) : IBookRepository
         }
     }
 
-    public void DeletarLivro(int id)
+    public bool DeletarLivro(int id)
     {
-        var livroExistente = app_context.Livros.FirstOrDefault(a => a.Id == id);
-        if (livroExistente != null)
-        {
-            app_context.Remove(livroExistente);
-            app_context.SaveChanges();
-        }
+        LivroModel livroExistente = app_context.Livros.FirstOrDefault(a => a.IdLivro == id);
+        if (livroExistente == null)
+            throw new Exception("O livro não existe");
+
+        app_context.Remove(livroExistente);
+        app_context.SaveChanges();
+        return true;
     }
 
     public LivroModel ObterLivro(int id)
     {
-        return app_context.Livros.FirstOrDefault(a => a.Id == id);
-    }
-
-    public AnotacaoLivroModel CadastrarAnotacaoLivro(AnotacaoModel anotacao, LivroModel livro)
-    {
-        var anotacaoLivro = new AnotacaoLivroModel { Anotacao = anotacao, Livro = livro };
-        app_context.AnotacoesLivros.Add(anotacaoLivro);
-        app_context.SaveChanges();
-
-        return anotacaoLivro;
-    }
-
-    public AnotacaoLivroModel ObterAnotacaoLivro(int id)
-    {
-            return app_context.AnotacoesLivros.FirstOrDefault(a => a.Livro.Id == id);
+        return app_context.Livros.FirstOrDefault(a => a.IdLivro == id);
     }
 }

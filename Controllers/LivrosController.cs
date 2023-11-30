@@ -23,7 +23,7 @@ public class LivrosController(IBookRepository bookRepository) : Controller
         List<LivroModel> livros = _bookRepository.ListarLivro();
         return View(livros);
     }
-    
+
     public IActionResult Details(int id)
     {
         LivroModel livro = _bookRepository.ObterLivro(id);
@@ -52,11 +52,11 @@ public class LivrosController(IBookRepository bookRepository) : Controller
         }
         catch (Exception ex)
         {
-            TempData["Mensagem"] = $"Houve um erro e não foi possível cadastrar o livro. Detalhes: {ex.Message}";
+            TempData["Mensagem"] =
+                $"Houve um erro e não foi possível cadastrar o livro. Detalhes: {ex.Message}";
             return RedirectToAction("Index");
         }
     }
-
 
     public IActionResult Editar(int id)
     {
@@ -73,21 +73,17 @@ public class LivrosController(IBookRepository bookRepository) : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Atualizar(LivroModel livro)
     {
-        if (ModelState.IsValid)
+        try
         {
-            try
-            {
-                _bookRepository.AtualizarLivro(livro);
-            }
-            catch
-            {
-                TempData["Mensagem"] = "Livro não encontrado. Edição não realizada.";
-                return RedirectToAction("Index");
-            }
+            _bookRepository.AtualizarLivro(livro);
             TempData["Mensagem"] = "Editado com sucesso!";
             return RedirectToAction("Index");
         }
-        return View(livro);
+        catch
+        {
+            TempData["Mensagem"] = "Livro não encontrado. Edição não realizada.";
+            return RedirectToAction("Index");
+        }
     }
 
     public IActionResult ConfirmarDeletar(int id)
@@ -101,20 +97,12 @@ public class LivrosController(IBookRepository bookRepository) : Controller
         return View(livro);
     }
 
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Delete(int id)
     {
-        var LivroModel = _bookRepository.ObterLivro(id);
-
-        if (LivroModel == null)
-        {
-            TempData["Mensagem"] = "Livro não encontrado. Exclusão não realizada.";
-            return RedirectToAction("Index");
-        }
-
         _bookRepository.DeletarLivro(id);
-
         TempData["Mensagem"] = "Livro excluído com sucesso!";
         return RedirectToAction("Index");
     }

@@ -5,6 +5,8 @@
     ViewData["Title"] = "Log in";
 }
 
+
+
 <style>
     .col-md-4{
   background-color: white;
@@ -46,12 +48,9 @@
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
-                <div>
+                <div style="display: flex;flex-direction:column;gap:12px;padding: 16px 0;justify-content:center;text-align:center;">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu a senha?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Não tem uma conta? Crie uma!</a>
+                        Não tem uma conta? <a style="text-decoration: none;" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Crie uma!</a>
                     </p>
                     @* <p>
                         <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>

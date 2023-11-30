@@ -21,7 +21,7 @@ namespace BookHub.Migrations
 
             modelBuilder.Entity("BookHub.Models.AnotacaoModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdAnotacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -33,6 +33,9 @@ namespace BookHub.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("IdLivro")
+                        .HasColumnType("int");
+
                     b.Property<string>("Texto")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -41,18 +44,17 @@ namespace BookHub.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdAnotacao");
+
+                    b.HasIndex("IdLivro");
 
                     b.ToTable("Anotacoes");
                 });
 
             modelBuilder.Entity("BookHub.Models.LivroModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdLivro")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CodigoAnotacao")
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
@@ -71,7 +73,7 @@ namespace BookHub.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdLivro");
 
                     b.ToTable("Livros");
                 });
@@ -272,6 +274,17 @@ namespace BookHub.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BookHub.Models.AnotacaoModel", b =>
+                {
+                    b.HasOne("BookHub.Models.LivroModel", "Livro")
+                        .WithMany("Anotacoes")
+                        .HasForeignKey("IdLivro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Livro");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -321,6 +334,11 @@ namespace BookHub.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookHub.Models.LivroModel", b =>
+                {
+                    b.Navigation("Anotacoes");
                 });
 #pragma warning restore 612, 618
         }

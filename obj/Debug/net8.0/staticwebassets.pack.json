@@ -5,16 +5,36 @@
       "PackagePath": "staticwebassets\\BookHub.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Anotacoes\\Edit.css",
+      "PackagePath": "staticwebassets\\css\\Anotacoes\\Edit.css"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Anotacoes\\Index.css",
+      "PackagePath": "staticwebassets\\css\\Anotacoes\\Index.css"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Livros\\Cadastro.css",
+      "PackagePath": "staticwebassets\\css\\Livros\\Cadastro.css"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Livros\\Delete.css",
+      "PackagePath": "staticwebassets\\css\\Livros\\Delete.css"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Livros\\Editar.css",
+      "PackagePath": "staticwebassets\\css\\Livros\\Editar.css"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\Livros\\Index.css",
+      "PackagePath": "staticwebassets\\css\\Livros\\Index.css"
+    },
+    {
       "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\layoutAdmin.css",
       "PackagePath": "staticwebassets\\css\\layoutAdmin.css"
     },
     {
       "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
-      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\iconfav.ico",
-      "PackagePath": "staticwebassets\\iconfav.ico"
     },
     {
       "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\img\\AlienMonster.png",
@@ -31,6 +51,14 @@
     {
       "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\img\\logonewbookhubblack.png",
       "PackagePath": "staticwebassets\\img\\logonewbookhubblack.png"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\js\\Anotacoes\\Index.js",
+      "PackagePath": "staticwebassets\\js\\Anotacoes\\Index.js"
+    },
+    {
+      "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\js\\Livros\\Index.js",
+      "PackagePath": "staticwebassets\\js\\Livros\\Index.js"
     },
     {
       "Id": "C:\\Users\\melan\\Documents\\GitHub\\BookHub\\wwwroot\\js\\site.js",

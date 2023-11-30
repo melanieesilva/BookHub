@@ -186,16 +186,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/melan/Documents/GitHub/BookHub/Views/AnotacaoLivro/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vdGFjYW9MaXZyb1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/melan/Documents/GitHub/BookHub/Views/Anotacoes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vdGFjb2VzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/melan/Documents/GitHub/BookHub/Views/Anotacoes/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vdGFjb2VzXERlbGV0ZS5jc2h0bWw=
+[C:/Users/melan/Documents/GitHub/BookHub/Views/Anotacoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vdGFjb2VzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/melan/Documents/GitHub/BookHub/Views/Anotacoes/Edit.cshtml]
@@ -216,10 +212,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/melan/Documents/GitHub/BookHub/Views/Livros/Cadastro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXENhZGFzdHJvLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/melan/Documents/GitHub/BookHub/Views/Livros/ConfirmarDeletar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXENvbmZpcm1hckRlbGV0YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/melan/Documents/GitHub/BookHub/Views/Livros/Details.cshtml]

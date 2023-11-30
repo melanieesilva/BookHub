@@ -14,17 +14,18 @@
 <aside class="sidebar">
     <div class="logo">
        <a asp-controller="Home" asp-action="Index">
-           <img src="/img/logonewbookhubblack.png" height="40px">
+           <img src="/img/logonewbookhubblack.png" height="40px" class="imgSide">
+           <img src="iconfav.ico" alt="" class="imgIcon">
        </a>
         
     </div>
     <div class="menu">
         <ul class="navMenu">
-            <li><iconify-icon icon="majesticons:home-line"></iconify-icon>
-                <a asp-controller="Anotacoes" asp-action="Index">Anotações</a>
+            <li><iconify-icon icon="majesticons:home-line" class="iconItem"></iconify-icon>
+                <a asp-controller="Anotacoes" asp-action="Index" class="item">Anotações</a>
             </li>
-            <li><iconify-icon icon="ph:books"></iconify-icon>
-            <a asp-asp-controller="Livros" asp-action="Index">Livros</a>
+            <li><iconify-icon icon="ph:books" class="iconItem"></iconify-icon>
+            <a asp-controller="Livros" asp-action="Index" class="item">Livros</a>
             </li>
         </ul>
     </div>

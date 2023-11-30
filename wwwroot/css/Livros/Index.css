@@ -1,0 +1,71 @@
+.containerInfo{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 40px;
+    justify-content: space-around;
+}
+
+.card{
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.moreCard{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.item-drop{
+    padding: 10px 0;
+    
+}
+.item-drop > a{
+    text-decoration: none;
+}
+.item-drop:hover{
+    background-color: rgb(247, 247, 247);
+}
+
+
+.addNote{
+    text-decoration: none;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    gap: 8px;
+}
+.addNote > iconify-icon{
+    font-size: 16px;
+}
+.addNote:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(240, 240, 240);
+}
+
+
+.deleteIcon{
+    margin-right: 12px;
+    color: rgb(218, 13, 13); 
+    border: 1px solid rgb(218, 13, 13); 
+    padding: 12px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}

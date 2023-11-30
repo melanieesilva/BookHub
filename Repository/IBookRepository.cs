@@ -11,16 +11,15 @@ namespace BookHub.Repository
         AnotacaoModel CadastrarAnotacao(AnotacaoModel anotacao);
         List<AnotacaoModel> ListarAnotacoes();
         void AtualizarAnotacao(AnotacaoModel anotacao);
-        void DeletarAnotacao(int id);
+        bool DeletarAnotacao(int id);
         AnotacaoModel ObterAnotacao(int id);
         
         LivroModel CadastrarLivro(LivroModel livro);
         List<LivroModel> ListarLivro();
         void AtualizarLivro(LivroModel livro);
-        void DeletarLivro(int id);
+        bool DeletarLivro(int id);
         LivroModel ObterLivro(int id);
 
-        AnotacaoLivroModel CadastrarAnotacaoLivro(AnotacaoModel anotacao, LivroModel livro);
-        AnotacaoLivroModel ObterAnotacaoLivro(int id);
+       
     }
 }

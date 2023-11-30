@@ -14,5 +14,15 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<AnotacaoModel> Anotacoes { get; set; }
     public DbSet<LivroModel> Livros { get; set; }
-    public DbSet<AnotacaoLivroModel> AnotacoesLivros { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
+    modelBuilder.Entity<AnotacaoModel>()
+        .HasOne(a => a.Livro)
+        .WithMany(l => l.Anotacoes)
+        .HasForeignKey(a => a.IdLivro);
+
+
+}
 }

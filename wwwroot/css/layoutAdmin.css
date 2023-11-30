@@ -17,6 +17,8 @@ main{
     width: 80%;
     overflow: scroll;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar{
@@ -62,7 +64,7 @@ main{
 
 .category{
     padding: 12px 16px;
-    background-color: rgb(194, 207, 254);
+    background-color: rgb(240, 243, 255);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -110,13 +112,13 @@ main{
     display: flex;
     flex-wrap: wrap;
     padding: 0 40px;
-    /* justify-content: space-between; */
+    justify-content: flex-start;
   }
   
   .note{
     position: relative;
     background-color: #258cfb;
-    width: calc(100% / 4 - 10px);
+    width: 250px;
     margin: 5px;
     height: 224px;
     border-radius: 10px;
@@ -214,3 +216,38 @@ main{
     width: fit-content;
   }
   
+  .imgIcon{
+    display: none;
+  }
+/* 
+  @media (min-width: 768px){
+    .imgSide{
+      display: none;
+    }
+    .imgIcon{
+      display: flex;
+    }
+    .item{
+      display: none;
+    }
+
+    .iconItem{
+      font-size: 30px;
+    }
+
+    .note{
+      width: 220px;
+    }
+
+    .opt{
+      display: none !important;
+    }
+  }
+  @media (min-width: 1024px){
+    .imgSide{
+      height: 32px;
+    }
+    .imgIcon{
+      display: none;
+    }
+  } */

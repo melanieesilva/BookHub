@@ -5,14 +5,24 @@
     Layout = "_LayoutAdmin";
 }
 
-<h1>Edit</h1>
+<link rel="stylesheet" href="/css/Anotacoes/Edit.css">
 
-<h4>AnotacaoModel</h4>
-<hr />
-<div class="row">
+
+<div class="return">
+    <a asp-controller="Anotacoes" asp-action="Index">
+        <div class="iconReturn">
+            <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+        </div>
+        Voltar para anotações
+    </a>
+</div>
+
+
+
+@* <div class="row">
     <div class="col-md-4">
-        <form asp-action="Atualizar" method="POST">
-            <input type="hidden" asp-for="Id" />
+        <form asp-controller="Anotacoes" asp-action="Atualizar" method="POST" >
+            
             <div class="form-group">
                 <label asp-for="Titulo" class="control-label"></label>
                 <input asp-for="Titulo" class="form-control" />
@@ -34,13 +44,53 @@
                 <span asp-validation-for="Cor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <input type="hidden" asp-for="IdAnotacao" />
             </div>
         </form>
     </div>
-</div>
+</div> *@
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row" style="width:100%">
+    <div class="col-md-4" style="width: 100%;">
+        <form asp-controller="Anotacoes" asp-action="Atualizar" method="POST">
+            <input type="hidden" asp-for="IdAnotacao">
+            <div class="form-group">
+                <input asp-for="Titulo" placeholder="Título..." class="form-control title" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <textarea asp-for="Texto" placeholder="Escreva algo..." class="form-control text"></textarea>
+                <span asp-validation-for="Texto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categoria" class="control-label" style="margin-bottom: 8px;"></label>
+                <input asp-for="Categoria" placeholder="Adicione uma categoria..." class="form-control" style="width: 40%;background: none !important; border:none;" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Cor</p>
+                <div class="colors">
+                        <div style="background-color: #D1BEF1;" data-backCor="#D1BEF1" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color:#C8E24D;" data-backCor="#C8E24D" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color: #F5B501;" data-backCor="#F5B501" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <div style="background-color: #01af5e;" data-backCor="#01af5e" class="cor"
+                            onclick="select(this)">
+                        </div>
+                        <input asp-for="Cor" id="inputCor" hidden>
+                        <span asp-validation-for="Cor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" style="background-color: black;border-radius:100px;border:none;padding: 8px 24px;"/>
+            </div>
+
+        </form>
+    </div>
 </div>
 

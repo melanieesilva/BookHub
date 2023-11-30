@@ -1,47 +1,92 @@
 @model IEnumerable<BookHub.Models.LivroModel>
 
+<link rel="stylesheet" href="/css/Livros/Index.css">
+
+
 @{
     ViewData["Title"] = "Home Page";
     Layout = "_LayoutAdmin";
 }
 
 
-<div class="container">
-    <div class="headerCon">
-        <div class="contentTitle" style="display: flex; gap:14px;align-items:center;padding: 40px 0;">
-<h1>Bem vindo!</h1><img src="/img/WavingHand.png" width="40px" height="40px">
-        </div>
-        <h3 style="margin-bottom: 32px;font-weight:400">Livros</h3>
+@if (TempData["Mensagem"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert"
+        style="top:24px; right: 24px; position: absolute;z-index:1;">
+        <strong>@TempData["Mensagem"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="containerInfo">
+}
 
-    @foreach (var item in Model){
+<div class="headerIndex">
+    <h1 class="titleIndex">Livros</h1>
+    <p>
+        <a asp-controller="Livros" asp-action="Cadastro" class="btnCreate">Novo Livro <iconify-icon
+                icon="ic:round-add"></iconify-icon></a>
+    </p>
+</div>
+
+<div class="containerInfo">
+    @foreach (var item in Model)
+    {
         <div class="card" style="width: 18rem;">
             <div class="card-body">
+                <div class="dropdown">
+                    <button class="moreCard btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <iconify-icon icon="mingcute:more-2-fill" style="color: black !important;"></iconify-icon>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="item-drop"><a style="color: rgb(207, 18, 18); padding-left: 10px;" data-IdLivro="@item.IdLivro" onclick="deleteConfirm(this)">Excluir</a></li>
+                        <li class="item-drop"><a style="padding-left: 10px;" asp-action="Editar"
+                                asp-route-id="@item.IdLivro">Editar</a></li>
+
+                    </ul>
+                </div>
+                <img src="/img/GreenBook.png" alt="" width="20px" height="20px" style="margin-bottom: 12px !important;">
                 <h5 class="card-title">@Html.DisplayFor(modelItem =>
-            item.Titulo)</h5>
+                item.Titulo)</h5>
                 <p class="card-text">@Html.DisplayFor(modelItem =>
-            item.Descricao)</p>
+                item.Descricao)</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="category">@Html.DisplayFor(modelItem =>
-            item.Genero)</span></li>
+                    item.Genero)</span></li>
                 <li class="list-group-item">@Html.DisplayFor(modelItem =>
-            item.NomeAutor)</li>
-                <li class="list-group-item">
-                    <a style="color: rgb(207, 18, 18);" asp-action="ConfirmarDeletar" asp-route-id="@item.Id">Excluir</a>
+                item.NomeAutor)</li>
+
+                <li class="list-group-item" style="padding: 12px;">
+                    <a class="addNote" asp-controller="Anotacoes" asp-action="Create" asp-route-id="@item.IdLivro">Adicionar Nota <iconify-icon
+                icon="ic:round-add"></iconify-icon></a>
                 </li>
-                <li class="list-group-item">
-                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-                </li>
-                @if(item.Id < 1){
-                    <li class="list-group-item">
-                        <a asp-controller="Anotacoes" asp-action="Create" asp-route-id="@item.Id">Adicionar Anotação</a>
-                    </li>
-                }
+
             </ul>
         </div>
-}
-
-    </div>
+    }
 </div>
+
+
+<div class="modal" tabindex="-1" id="modalDelete">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="display: flex;align-items:center;">
+            <span class="deleteIcon"><iconify-icon icon="material-symbols:delete-outline"></iconify-icon></span> Excluir Livro?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que desejar excluir o livro? Essa ação é irreversível.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form asp-controller="Livros" asp-action="Delete" method="post">
+            <button type="submit" class="btn btn-danger" id="confirmDelete">Sim, Excluir</button>
+            <input type="hidden" id="IdLivroHidden">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/Livros/Index.js"></script>

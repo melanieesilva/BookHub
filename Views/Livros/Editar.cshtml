@@ -3,30 +3,43 @@
     Layout = "_LayoutAdmin";
 }
 
-<div class="containerText" style="display: flex; align-items:center;gap: 16px;padding: 40px 0">
+<link rel="stylesheet" href="/css/Livros/Editar.css">
+
+
+<div class="return">
+    <a asp-controller="Livros" asp-action="Index">
+        <div class="iconReturn">
+            <iconify-icon icon="ph:arrow-left-bold"></iconify-icon>
+        </div>
+        Voltar para livros
+    </a>
+</div>
+
+
+<div class="containerText" style="display: flex; align-items:center;gap: 16px;padding: 20px 40px">
     <h2>Editar Livro</h2> <img src="/img/GreenBook.png" alt="" width="30px" height="30px">
 </div>
 
 <div class="containerForm">
-    <form asp-controller="Livros asp-action="Atualizar" method="post">
+    <form asp-controller="Livros" asp-action="Atualizar" method="POST">
 
-        <div class="mb-3" style="width:50%;">
+        <div class="mb-3">
             <label for="Titulo" class="form-label">Título</label>
             <input asp-for="Titulo" class="form-control" id="Titulo" placeholder="Seu título..."/>
         </div>
-        <div class="mb-3" style="width:50%;">
+        <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
             <textarea class="form-control" id="descricao" rows="3" asp-for="Descricao"></textarea>
         </div>
-        <div class="mb-3" style="width:50%;">
+        <div class="mb-3">
             <label for="Autor" class="form-label">Autor</label>
             <input asp-for="NomeAutor" class="form-control" id="Autor" placeholder="Nome Autor..."/>
         </div>
-        <div class="mb-3" style="width:50%;">
+        <div class="mb-3">
             <label for="Genero" class="form-label">Categoria</label>
             <input asp-for="Genero" class="form-control" id="Genero" placeholder="Nome Gênero..."/>
         </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <input type="hidden" asp-for="Id">
+        <button type="submit" class="btnSubmit btn btn-primary">Editar</button>
+        <input type="hidden" asp-for="IdLivro">
     </form>
 </div>
